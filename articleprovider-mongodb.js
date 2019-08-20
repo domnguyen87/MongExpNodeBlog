@@ -41,3 +41,28 @@ ArticleProvider.prototype.findById = function(id, callback) {
       }
     });
 };
+
+ArticleProvider.prototype.save = function(articles, callback) {
+    this.getCollection(function(error, article_collection) {
+      if( error ) callback(error)
+      else {
+        if( typeof(articles.length)=="undefined")
+          articles = [articles];
+
+        for( var i =0;i< articles.length;i++ ) {
+          article = articles[i];
+          article.created_at = new Date();
+          if( article.comments === undefined ) article.comments = [];
+          for(var j =0;j< article.comments.length; j++) {
+            article.comments[j].created_at = new Date();
+          }
+        }
+
+        article_collection.insert(articles, function() {
+          callback(null, articles);
+        });
+      }
+    });
+};
+
+exports.ArticleProvider = ArticleProvider;
