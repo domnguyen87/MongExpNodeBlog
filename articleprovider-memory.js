@@ -45,6 +45,7 @@ new ArticleProvider().save([
   {title: 'Post one', body: 'Body one', comments:[{author:'Bob', comment:'I love it'}, {author:'Dave', comment:'This is rubbish!'}]},
   {title: 'Post two', body: 'Body two'},
   {title: 'Post three', body: 'Body three'}
+  {title: 'Post four', body: 'Body four'}
 ], function(error, articles){});
 
 exports.ArticleProvider = ArticleProvider;
