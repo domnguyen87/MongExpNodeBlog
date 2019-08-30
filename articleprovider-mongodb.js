@@ -12,7 +12,7 @@ ArticleProvider = function(host, port) {
 
 ArticleProvider.prototype.getCollection= function(callback) {
   this.db.collection('articles', function(error, article_collection) {
-    if( error ) callback(error);
+    if( result ) callback(result);
     else callback(null, article_collection);
   });
 };
